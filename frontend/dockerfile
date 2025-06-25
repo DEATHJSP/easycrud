@@ -1,1 +1,20 @@
-FROM 
+FROM node:24-alpine
+
+COPY . /opt/
+
+WORKDIR /opt
+
+RUN apt update && apt install nodejs npm 
+
+RUN apk updtae && apk add apache2
+
+# DIST/INDEX.HTML --> /VAR/WW/HTML
+
+RUN rm -f /var/www/localhost/htdocs/*
+RUN cp -rf dist/* /var/www/localhost/htdocs/
+
+EXPOSE 80
+
+CMD [ "httpd","-D","FOREGROUND" ] 
+
+# entrypoint apachectl , -D , FOREGROUND

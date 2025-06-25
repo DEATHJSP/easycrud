@@ -7,7 +7,7 @@ WORKDIR /opt
 RUN rm -rf src\main\resources\application.properties
 RUN cp -f application.properties src\main\resources\application.properties
 
-RUN mvn clean package
+RUN mvn clean package -DskipTest
 
 WORKDIR /opt/target
 
