@@ -4,7 +4,7 @@ COPY . /opt/
 
 WORKDIR /opt
 
-RUN apt update && apt install nodejs npm 
+RUN npm build && npm run build
 
 RUN apk updtae && apk add apache2
 
