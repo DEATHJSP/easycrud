@@ -1,17 +1,17 @@
 FROM maven:3.8.3-openjdk-17
 
-copy . /op/
+COPT . /opt/
 
-workdir /opt
+WORKDIR /opt
 
-run rm -rf src\main\resources\application.properties
-run cp -f application.properties src\main\resources\application.properties
+RUN rm -rf src\main\resources\application.properties
+RUN cp -f application.properties src\main\resources\application.properties
 
-run mvn clean package
+RUN mvn clean package
 
-workdir /opt/target
+WORKDIR /opt/target
 
-expose 8080
+EXPOSE 8080
 
 ENTRYPOINT [ "java","-jar" ]
 CMD [ "student-registration-backend-0.0.1-SNAPSHOT.jar" ]
