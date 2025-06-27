@@ -5,10 +5,10 @@ COPY . /opt/
 WORKDIR /opt
 
 RUN rm -rf src\main\resources\application.properties && \
-    cp -f application.properties src\main\resources\application.properties && \
+    cp -rf application.properties src\main\resources\application.properties && \
     mvn clean package -DskipTests
 
-WORKDIR /opt/target
+WORKDIR target/
 
 EXPOSE 8080
 
